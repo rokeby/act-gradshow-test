@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>act grad show demo</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div class="container">
+    <canvas id="canvas" width="1440" height="900"></canvas>
+</div>
+
+<div class="centerText">
+    <div class="title">
+        PUT THAT WHERE.
+    </div>
+</div>
+
+<div class="bottomLeftText">
+    MIT Program in Art, Culture, Technology<br/>
+    2020 Graduate Exhibition
+<div>
+
+<script src="simpleheat.js"></script>
+<script src="data.js"></script>
+
+
+<script>
+
+var w = window.innerWidth;
+var h = window.innerHeight;
+console.log(w + ", " + h);
+
+window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
+                               window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
+
+function get(id) {
+    return document.getElementById(id);
+}
+
+var heat = simpleheat('canvas').data(data).max(18),
+    frame;
+
+function draw() {
+    console.time('draw');
+    heat.draw();
+    console.timeEnd('draw');
+    frame = null;
+}
+
+draw();
+
+get('canvas').onmousemove = function (e) {
+    heat.add([e.layerX, e.layerY, 1]);
+    frame = frame || window.requestAnimationFrame(draw);
+};
+
+var radius = get('radius'),
+    blur = get('blur'),
+    changeType = 'oninput' in radius ? 'oninput' : 'onchange';
+
+radius[changeType] = blur[changeType] = function (e) {
+    heat.radius(+radius.value, +blur.value);
+    frame = frame || window.requestAnimationFrame(draw);
+};
+
+</script>
+</body>
+</html>

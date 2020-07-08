@@ -1,0 +1,71 @@
+@font-face {
+  font-family: 'Elgoc';
+  src: url('./assets/Elgoc.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body { 
+	background-color: #000;
+	margin: 0;
+}
+
+a { 
+	color: #0077ff; 
+}
+
+.container { 
+	width: 100vw; 
+	height: 100vh; 
+	position: fixed; 
+}
+
+.options { position: absolute; 
+	top: 0; 
+	right: 0; 
+	background: rgba(255,255,255,0.6);
+	line-height: 1; 
+}
+
+#canvas {
+	width: 100vw;
+	height: 100vh;
+}
+
+/*.image {
+	position: absolute;
+	top: 100px;
+	right: 100px;
+	z-index: -10;
+}*/
+
+.centerText {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+/*	border: 1px white solid;
+*/}
+
+.title {
+	font-family: 'Elgoc';
+	font-size: 10em;
+	color: white;
+	top: 50%;
+/*	border: 1px white solid;
+*/}
+
+.bottomLeftText {
+	position: absolute;
+	font-family: 'Elgoc';
+	font-size: 1em;
+	color: white;
+	left: 10px;
+	bottom: 10px;
+}
+
+* {
+cursor: none;
+}
